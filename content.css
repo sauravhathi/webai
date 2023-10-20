@@ -1,14 +1,12 @@
 #chat-container {
-    position: fixed;
-    bottom: 0;
-    right: 0;
+    position: relative;
     width: 500px;
     height: 500px;
     background-color: #333;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     display: flex;
-    z-index: 9999;
+    /* z-index: 9999; */
     flex-direction: column;
     overflow: hidden;
 }
@@ -19,7 +17,7 @@
     overflow-y: scroll;
     padding: 10px;
     padding-bottom: 80px;
-    padding-top: 10px;
+    padding-top: 20px;
 }
 
 #user-input {
@@ -92,7 +90,6 @@
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
     display: flex;
     gap: 5px;
     padding: 10px;
@@ -104,6 +101,7 @@
 #access-key {
     flex-grow: 1;
     padding: 5px;
+    max-width: 100px;
     background-color: #2e2e2e;
     border: 1px solid #333;
     border-radius: 5px;
@@ -116,6 +114,7 @@
 }
 
 #engine-select {
+    width: 80px;
     padding: 5px;
     background-color: #2e2e2e;
     border-radius: 5px;
@@ -127,7 +126,6 @@
     outline: none;
 }
 
-/* topb bar small dervie col and flex end */
 @media only screen and (max-width: 600px) {
     #top-bar {
         flex-direction: column;

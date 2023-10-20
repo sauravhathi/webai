@@ -1,3 +1,6 @@
+
+console.log('👨‍💻 Author: Saurav Hathi \n🌟 GitHub: https://github.com/sauravhathi \n🚀Linkedin: https://www.linkedin.com/in/sauravhathi');
+
 document.addEventListener("keydown", (e) => {
     if ((e.altKey && (e.key === "x" || e.key === "c")) || (e.ctrlKey && e.shiftKey)) {
         const chatContainer = document.getElementById("chat-container");
@@ -10,22 +13,31 @@ document.addEventListener("keydown", (e) => {
     }
 });
 
-// Create a container for the chat UI
 const chatContainer = document.createElement("div");
 chatContainer.id = "chat-container";
-document.body.appendChild(chatContainer);
+
+function watchForElement() {
+  const observer = new MutationObserver(function (mutations) {
+    const parent = document.querySelector("div[aria-labelledby='question-container']");
+    if (parent) {
+      parent.appendChild(chatContainer);
+      observer.disconnect();
+    }
+  });
+
+  observer.observe(document, { childList: true, subtree: true });
+}
+
 
 const topBar = document.createElement("div");
 topBar.id = "top-bar";
 chatContainer.appendChild(topBar);
 
-// accessk key
 const accessKey = document.createElement("input");
 accessKey.id = "access-key";
 accessKey.placeholder = "Access Key";
 topBar.appendChild(accessKey);
 
-// Create an engine selection dropdown
 const engineSelect = document.createElement("select");
 engineSelect.id = "engine-select";
 engineSelect.innerHTML = `
@@ -34,12 +46,10 @@ engineSelect.innerHTML = `
 `;
 topBar.appendChild(engineSelect);
 
-// Create a chat area
 const chatMessages = document.createElement("div");
 chatMessages.id = "chat-messages";
 chatContainer.appendChild(chatMessages);
 
-// Create a user input field
 const userInput = document.createElement("div");
 userInput.id = "user-input";
 chatContainer.appendChild(userInput);
@@ -59,18 +69,15 @@ sendButton.id = "send-button";
 sendButton.textContent = "Send";
 userInput.appendChild(sendButton);
 
-// Create a loading indicator
 const loadingIndicator = document.createElement("div");
 loadingIndicator.id = "loading-indicator";
 loadingIndicator.innerHTML = "Loading...";
 chatMessages.append(loadingIndicator)
 
-// Add event listeners for the buttons
 sendButton.addEventListener("click", () => {
     const messageInput = document.getElementById("message-input");
     const message = messageInput.value.trim();
     if (message) {
-        // get hegit text areta then add padding bottm of chat-messages
         const inputHeight = document.getElementById("message-input").scrollHeight;
         const padding = inputHeight;
         chatMessages.style.paddingBottom = padding + 50 + "px";
@@ -80,21 +87,28 @@ sendButton.addEventListener("click", () => {
     }
 });
 
-let loading = false; // Add this variable to track loading state
+let loading = false;
 
 async function sendMessageToChatbot(message) {
+
+    if (!message) {
+        return;
+    }
+
+    if (!accessKey.value) {
+        alert("Please enter an access key");
+        return;
+    }
+
     if (loading) {
-        return; // Do nothing if already loading
+        return;
     }
 
     loading = true;
-    sendButton.disabled = true; // Disable the send button during loading
-    inputField.disabled = true; // Disable the input field during loading
+    sendButton.disabled = true;
+    inputField.disabled = true;
 
-    // Show the loading indicator
     loadingIndicator.style.display = 'block';
-
-    // Add the loading-active class to the chat container when loading starts
     chatContainer.classList.add("loading-active");
 
     const apiUrl = "https://web-ai-vuftqw44dq-uc.a.run.app/api/v1/completion";
@@ -109,6 +123,7 @@ async function sendMessageToChatbot(message) {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
+                "Authorization": `Bearer ${accessKey.value}`,
             },
             body: JSON.stringify(data),
         });
@@ -121,7 +136,6 @@ async function sendMessageToChatbot(message) {
         const botReply = responseData.data;
         addChatMessage(botReply, false);
 
-        // Scroll down to the latest message with smooth scrolling
         chatMessages.scrollTo({
             top: chatMessages.scrollHeight,
             behavior: 'smooth',
@@ -130,17 +144,13 @@ async function sendMessageToChatbot(message) {
         console.error("Error sending message to the chatbot:", error);
     } finally {
         loading = false;
-        sendButton.disabled = false; // Enable the send button
-        inputField.disabled = false; // Enable the input field
+        sendButton.disabled = false;
+        inputField.disabled = false;
 
-        // Hide the loading indicator
         loadingIndicator.style.display = 'none';
-
-        // Remove the loading-active class from the chat container when loading is completed
 
         chatContainer.classList.remove("loading-active");
 
-        // Scroll down to the latest message after the API call is completed
         chatMessages.scrollTo({
             top: chatMessages.scrollHeight,
             behavior: 'smooth',
@@ -148,10 +158,11 @@ async function sendMessageToChatbot(message) {
     }
 }
 
-// Function to add a chat message to the chat area
 function addChatMessage(message, isUser) {
     const messageDiv = document.createElement("div");
     messageDiv.classList.add(isUser ? "user-message" : "bot-message");
     messageDiv.textContent = message;
     chatMessages.appendChild(messageDiv);
 }
+
+watchForElement();
