@@ -4,13 +4,19 @@
 
 <p align="center">Extension for Chrome and Firefox that allows you to chat with GPT-3 and BardAI.</p>
 
+`Use the keyboard shortcut (Alt+X or Alt+C) or (Ctrl+Shift) to open or close the chat interface.`
+
+## Screenshots
+
+<img width="50%" src="https://github.com/sauravhathi/webai/assets/61316762/30b8063c-ff24-49b1-94a0-1c9912ed55cf" alt="sc1">
+
 ## Features
 
 | Feature | Description |
 | --- | --- |
 | **Access Key** | Enter your access key to authenticate your requests. |
 | **Engine** | Choose between GPT-3 and Bard. |
-| **Toggle Extension** | Use the keyboard shortcut (Alt+X or Alt+C) or (Ctrl+Shift+X) to open or close the chat interface. |
+| **Toggle Extension** | Use the keyboard shortcut (Alt+X or Alt+C) or (Ctrl+Shift) to open or close the chat interface. |
 | **Chat Interface** | You can type your messages in the input field and press "Enter" or click the "Send" button to send messages to ChatGPT. |
 | **Real-time Interaction** | Watch the chat interface for real-time responses from ChatGPT. Your messages and the bot's replies are color-coded for easy differentiation. |
 | **Loading Indicator** | When ChatGPT is processing a request, a loading indicator is displayed to keep you informed. |
