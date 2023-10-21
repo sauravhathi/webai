@@ -40,7 +40,7 @@ To use the ChatGPT and BardAI, follow these simple steps:
 
 1. Add your access key to the extension.
 2. Choose between GPT-3 and Bard.
-3. Use the keyboard shortcut (Alt+X or Alt+C) or (Ctrl+Shift+X) to open or close the chat interface.
+3. Use the keyboard shortcut (Alt+X or Alt+C) or (Ctrl+Shift) to open or close the chat interface.
 4. Type your messages in the input field and press "Enter" or click the "Send" button to send messages to ChatGPT.
 5. Watch the chat interface for real-time responses from ChatGPT. Your messages and the bot's replies are color-coded for easy differentiation.
 
