@@ -1,6 +1,6 @@
 # <p align="center">WebAi ChatGPT and BardAI Extension</p>
 
-<p align="center"><img width="500" src="https://github.com/sauravhathi/codetantra-enable-copy-and-paste/assets/61316762/fb0a6890-d567-4d24-a13f-f1418524fc74" alt="youtube-ad-blocker-popup-removal"></p>
+<p align="center"><img width="200" src="https://github.com/sauravhathi/webai/blob/master/images/icon128.png?raw=true" alt="WebAi ChatGPT and BardAI Extension"></p>
 
 <p align="center">Extension for Chrome and Firefox that allows you to chat with GPT-3 and BardAI.</p>
 
