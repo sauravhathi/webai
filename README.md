@@ -1,22 +1,42 @@
-# <p align="center">WebAI Extension</p>
+# <p align="center">WebAi ChatGPT and BardAI Extension</p>
 
 <p align="center"><img width="500" src="https://github.com/sauravhathi/codetantra-enable-copy-and-paste/assets/61316762/fb0a6890-d567-4d24-a13f-f1418524fc74" alt="youtube-ad-blocker-popup-removal"></p>
 
-<p align="center">YouTube Ad Blocker Popup Removal is a Google Chrome extension that removes the annoying popup that appears when you try to skip an ad on YouTube.</p>
+<p align="center">Extension for Chrome and Firefox that allows you to chat with GPT-3 and BardAI.</p>
+
+## Features
+
+| Feature | Description |
+| --- | --- |
+| **Access Key** | Enter your access key to authenticate your requests. |
+| **Engine** | Choose between GPT-3 and Bard. |
+| **Toggle Extension** | Use the keyboard shortcut (Alt+X or Alt+C) or (Ctrl+Shift+X) to open or close the chat interface. |
+| **Chat Interface** | You can type your messages in the input field and press "Enter" or click the "Send" button to send messages to ChatGPT. |
+| **Real-time Interaction** | Watch the chat interface for real-time responses from ChatGPT. Your messages and the bot's replies are color-coded for easy differentiation. |
+| **Loading Indicator** | When ChatGPT is processing a request, a loading indicator is displayed to keep you informed. |
 
 ## Installation
 
-Follow these simple steps to install the extension:
+To install the ChatGPT Extension, follow these simple steps:
 
-1. **Clone or Download:** Clone this repository or download it as a zip file and extract it.
+```bash
+git clone https://github.com/sauravhathi/webai.git
+```
 
-2. **Open Chrome Extensions:** In your Google Chrome browser, navigate to `chrome://extensions/`.
+1. Download or clone this repository to your local machine by clicking the green "Code" button at the top of this page, and then "Download ZIP".
+2. Open the Extension Management page by navigating to chrome://extensions.
+3. Enable Developer Mode by clicking the toggle switch next to Developer mode.
+4. Click the Load unpacked button and select the extension directory.
 
-3. **Enable Developer Mode:** Enable the developer mode in the top right corner of the extensions page.
+## Usage
 
-4. **Load Unpacked Extension:** Click on "Load unpacked" and select the folder where you extracted the repository.
+To use the ChatGPT and BardAI, follow these simple steps:
 
-5. **Done:** The extension should now be installed and working. You can test it by playing a YouTube video with ads and trying to skip the ad.
+1. Add your access key to the extension.
+2. Choose between GPT-3 and Bard.
+3. Use the keyboard shortcut (Alt+X or Alt+C) or (Ctrl+Shift+X) to open or close the chat interface.
+4. Type your messages in the input field and press "Enter" or click the "Send" button to send messages to ChatGPT.
+5. Watch the chat interface for real-time responses from ChatGPT. Your messages and the bot's replies are color-coded for easy differentiation.
 
 ## Contributing
 
@@ -34,7 +54,7 @@ Donate: `saurav.34@paytm`
 
 ## License
 
-This project is licensed under the MIT License. See the [LICENSE](https://github.com/sauravhathi/youtube-ad-blocker-popup-removal/blob/master/LICENSE) file for details.
+This project is licensed under the MIT License. See the [LICENSE](https://github.com/sauravhathi/webai/blob/master/LICENSE) file for details.
 
 ## Author
 

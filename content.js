@@ -17,15 +17,15 @@ const chatContainer = document.createElement("div");
 chatContainer.id = "chat-container";
 
 function watchForElement() {
-  const observer = new MutationObserver(function (mutations) {
-    const parent = document.querySelector("div[aria-labelledby='question-container']");
-    if (parent) {
-      parent.appendChild(chatContainer);
-      observer.disconnect();
-    }
-  });
+    const observer = new MutationObserver(function (mutations) {
+        const parent = document.querySelector("div[aria-labelledby='each-type-question']");
+        if (parent) {
+            parent.appendChild(chatContainer);
+            observer.disconnect();
+        }
+    });
 
-  observer.observe(document, { childList: true, subtree: true });
+    observer.observe(document, { childList: true, subtree: true });
 }
 
 
@@ -36,6 +36,7 @@ chatContainer.appendChild(topBar);
 const accessKey = document.createElement("input");
 accessKey.id = "access-key";
 accessKey.placeholder = "Access Key";
+accessKey.value = localStorage.getItem("accessKey") || "";
 topBar.appendChild(accessKey);
 
 const engineSelect = document.createElement("select");
@@ -74,10 +75,18 @@ loadingIndicator.id = "loading-indicator";
 loadingIndicator.innerHTML = "Loading...";
 chatMessages.append(loadingIndicator)
 
-sendButton.addEventListener("click", () => {
+function sendMessage() {
     const messageInput = document.getElementById("message-input");
     const message = messageInput.value.trim();
     if (message) {
+
+        if (accessKey.value === "") {
+            alert("Please enter your access key");
+            return;
+        }
+
+        localStorage.setItem("accessKey", accessKey.value);
+
         const inputHeight = document.getElementById("message-input").scrollHeight;
         const padding = inputHeight;
         chatMessages.style.paddingBottom = padding + 50 + "px";
@@ -85,21 +94,22 @@ sendButton.addEventListener("click", () => {
         messageInput.value = "";
         sendMessageToChatbot(message);
     }
+}
+
+inputField.addEventListener("keyup", function (event) {
+    if (event.key === "Enter") {
+        event.preventDefault();
+        sendMessage();
+    }
+});
+
+sendButton.addEventListener("click", () => {
+    sendMessage();
 });
 
 let loading = false;
 
 async function sendMessageToChatbot(message) {
-
-    if (!message) {
-        return;
-    }
-
-    if (!accessKey.value) {
-        alert("Please enter an access key");
-        return;
-    }
-
     if (loading) {
         return;
     }
@@ -166,3 +176,4 @@ function addChatMessage(message, isUser) {
 }
 
 watchForElement();
+
