@@ -36,7 +36,7 @@ chatContainer.appendChild(topBar);
 const accessKey = document.createElement("input");
 accessKey.id = "access-key";
 accessKey.placeholder = "Access Key";
-accessKey.value = localStorage.getItem("accessKey") || "";
+accessKey.value = localStorage.getItem("accessKey") || "access-key";
 topBar.appendChild(accessKey);
 
 const engineSelect = document.createElement("select");
